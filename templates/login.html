@@ -1,24 +1,40 @@
-{% extends "layout.html" %} {% block title %} Log In {% endblock %} {% block
-main %}
-<form action="/login" method="post">
-  <div class="mb-3">
-    <input
-      autocomplete="off"
-      autofocus
-      class="form-control mx-auto w-auto"
-      name="username"
-      placeholder="Username"
-      type="text"
-    />
-  </div>
-  <div class="mb-3">
-    <input
-      class="form-control mx-auto w-auto"
-      name="password"
-      placeholder="Password"
-      type="password"
-    />
-  </div>
-  <button class="btn btn-primary" type="submit">Log In</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <form id="logIn" action="/index" method="POST">
+    <p>Please provide your reservation details</p>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname" /><br /><br />
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname" /><br /><br />
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" /><br /><br />
+  </form>
+  <script>
+    document
+      .getElementById("logIn")
+      .addEventListener("submit", function (event) {
+        var requiredFields = ["fname", "lname", "password"];
+        var allFieldsFilled = true;
+
+        requiredFields.forEach(function (fieldId) {
+          var field = document.getElementById(fieldId);
+          if (!field.value) {
+            allFieldsFilled = false;
+            alert("Please fill in all required fields.");
+            field.focus();
+            event.preventDefault();
+            return false;
+          }
+        });
+
+        if (!allFieldsFilled) {
+          event.preventDefault();
+        }
+      });
+  </script>
+</html>

@@ -11,6 +11,11 @@ class Content(db.Model):
     body = db.Column(db.Text, nullable=False)
 
 @app.route('/')
+def layout():
+    return render_template('layout.html')
+    
+
+@app.route('/index')
 def index():
     contents = Content.query.all()
     return render_template('index.html', contents=contents)
