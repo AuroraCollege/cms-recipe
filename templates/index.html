@@ -12,10 +12,14 @@
     <h1>Content List</h1>
     <ul>
       <!--categorize by recipe title, creator, type (breakfast, lunch, dinner, dessert)-->
-      {% for content in contents %}
+
+      {% for content in contents | sort(attribute='title') %}
+      <!--sorts titles-->
       <li>{{ content.title }}</li>
+
       {% endfor %}
     </ul>
+
     <a href="{{ url_for('add') }}">Add New Content</a>
   </body>
 </html>
