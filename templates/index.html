@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <title>Content Management System</title>
   </head>
+  <form id="form">
+    <input type="search" id="query" name="q" placeholder="Search..." />
+    <button>Search</button>
+  </form>
   <body>
     <h1>Content List</h1>
     <ul>
-      <!--categorize by recipe title, creator, -->
+      <!--categorize by recipe title, creator, type (breakfast, lunch, dinner, dessert)-->
       {% for content in contents %}
       <li>{{ content.title }}</li>
       {% endfor %}
